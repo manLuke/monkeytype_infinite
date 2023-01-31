@@ -23,16 +23,16 @@ const scrape = async () => {
 
     // confirm privacy policy and cookies
     await page.waitForSelector(selectors.cookieAccept);
-    await page.click(selectors.cookieAccept, { delay: 1000 });
+    await page.click(selectors.cookieAccept, { delay: 200 });
     await page.waitForSelector(selectors.privacyPolicy);
-    await page.click(selectors.privacyPolicy, { delay: 1000 });
+    await page.click(selectors.privacyPolicy, { delay: 200 });
 
     await page.mouse.click(100, 100);
     // start typing for 30 seconds
     let startTime = new Date().getTime();
     while (new Date().getTime() - startTime < 30000) {
       await typeWord(page);
-      await page.waitForTimeout(Math.floor(Math.random() * 50) + 50);
+      // await page.waitForTimeout(Math.floor(Math.random() * 50) + 50);
     }
 
     // screenshot the results
